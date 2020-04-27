@@ -1,0 +1,71 @@
+
+
+
+def update_board(board):
+    for i in range(4):
+        for j in range (4):
+         n=0
+         if board[i][j] == 0 :
+             if (j>0) and board [i][j-1] == 1 : 
+                n=n+1
+             if (j<3) and board [i][j+1] == 1 :
+                n=n+1
+             if (i>0) and (j>0) and board [i-1][j-1] == 1 :
+                n=n+1
+             if (i>0) and board [i-1][j] == 1 :
+                n=n+1
+             if (i>0) and (j<3) and board [i-1][j+1] == 1 :
+                n=n+1
+             if (i<3) and (j>0) and board [i+1][j-1] == 1 :
+                n=n+1
+             if (i<3) and board [i+1][j] == 1 :
+                n=n+1
+             if (i<3) and (j<3)and board [i+1][j+1] == 1 :
+                n=n+1
+             if (n>=3) :
+               board[i][j] == 1 
+         if board[i][j] == 1 :
+             if (j>0) and board [i][j-1] == 1 : 
+                n=n+1
+             if (j<3) and board [i][j+1] == 1 :
+                n=n+1
+             if (i>0) and (j>0) and board [i-1][j-1] == 1 :
+                n=n+1
+             if (i>0) and board [i-1][j] == 1 :
+                n=n+1
+             if (i>0) and (j<3) and board [i-1][j+1] == 1 :
+                n=n+1
+             if (i<3) and (j>0) and board [i+1][j-1] == 1 :
+                n=n+1
+             if (i<3) and board [i+1][j] == 1 :
+                n=n+1
+             if (i<3) and (j<3)and board [i+1][j+1] == 1 :
+                n=n+1
+         if n==3 or n==2 :
+            board[i][j] == 1 
+         else :
+            board[i][j] == 0
+
+    return board
+
+
+def try_update_board():
+    """Run two update steps on the board and print the results."""
+
+    board = [
+        [0, 0, 0, 0],
+        [0, 1, 1, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0],
+    ]
+    
+    result = update_board(board)
+    print(f'After one generation {board!r} becomes {result!r}.')
+
+    result = update_board(result)
+
+    print(f'After two generations {board!r} becomes {result!r}.')
+
+
+if __name__ == '__main__':
+    try_update_board()
